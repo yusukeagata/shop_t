@@ -1,0 +1,68 @@
+---
+ja:
+  activerecord:
+    attributes:
+      spree/review:
+        name: 名前
+        title: タイトル
+        review: 本文
+        rating: 評価
+        created_at: 日付
+        ip_address: IPアドレス
+        user: ユーザー
+        show_identifier: 投稿者を表示
+    models:
+      spree/review:
+        one: 1件のレビュー
+        other: "%{count}件のレビュー"
+  spree:
+    approval_status: 承認ステータス
+    approve: 承認する
+    approved_reviews: 承認済
+    average_customer_rating: 平均評価
+    back_reviews: レビュー一覧に戻る
+    based_upon_review_count:
+      one: 1件のレビューによる平均です
+      other: "%{count}件のレビューによる平均です"
+    by: by
+    editing_review_for_html: '%{link}のレビューの編集'
+    error_approve_review: レビューの承認に失敗しました
+    error_no_product: レビューされた商品はありません
+    feedback: フィードバック
+    feedback_review_for: "レビュー: '%{review}'"
+    for: for
+    from: from
+    info_approve_review: レビューが承認されました
+    leave_us_a_review_for: "'%{name}' の評価とレビューを是非教えてください"
+    no_reviews_available: "この商品はまだレビューがありません。"
+    out_of_5: "/ 5"
+    rating: 評価
+    reviews: レビュー
+    admin:
+      tab:
+        review_management: レビュー
+    review_successfully_submitted: レビューが登録されました
+    spree_reviews:
+      feedback_rating: フィードバックで評価する
+      include_unapproved: 未承認のレビューを表示する
+      manage_review_settings: レビューの表示を管理する
+      preview_size: レビュー表示件数
+      require_login: ユーザーにログインを要求する
+      review_settings: レビュー設定
+      show_email: メールアドレスを表示する
+      track_locale: ユーザーの地域(言語)情報を記録する
+      show_identifier: 投稿者を表示
+    star:
+      one: "1"
+      other: "%{count}"
+    stars: スター
+    submit_your_review: レビューを登録する
+    submitted_on: 公開日
+    unapproved_reviews: 非公開
+    voice:
+      one: "1 voice"
+      other: "%{count} voices"
+    was_this_review_helpful: "このレビューは参考になりましたか？"
+    write_your_own_review: レビューを書く
+    you_must_enter_value_for_rating: "を入力してください"
+    anonymous: 匿名
