@@ -1,0 +1,14 @@
+# pack-refs with: peeled fully-peeled 
+d64436670766b54da26b82b29c5cfd5766d985d1 refs/heads/0-50-stable
+8e466bca18d6e297a946a32b0d2148764b519a87 refs/heads/0-60-stable
+1156bdb9b4b2872bd625aa38507451d2e5b22bde refs/heads/0-70-stable
+7e319edee913be3d90ececf75137cfe6bd3165d9 refs/heads/2-0-stable
+dc91523633e98796d6d3808621bccef184f60b2f refs/heads/2-1-stable
+8f7cf0da8d1ef8de650873b3ea437497390c376f refs/heads/2-2-stable
+2021d7a2f3633a02fb13095d376863b7edb93d9a refs/heads/2-3-stable
+b43a93438ef34b5ec65e6d23344b0598c2d5ad53 refs/heads/2-4-stable
+47dab15e8f0541851067b638806c5810bdce3e06 refs/heads/3-0-stable
+23a14520fcd2c7c2e1b4df8a684f6bb46ccd77b6 refs/heads/3-1-stable
+de77ec6bb3e888b659be2f9fae64bb49bf1552bd refs/heads/master
+570be23be47e07c99bedcf1b6768adcbc83ec80e refs/heads/rails3
+d956a9ebf42945d226bfb465e5a1e6c632062e6f refs/heads/update_spree_dependencies

@@ -1,0 +1,17 @@
+# pack-refs with: peeled fully-peeled 
+c066fe2887f5b4632abdc8f958eec00e6a43ad8b refs/heads/0-11-stable
+604ac19bdf0ed5b2ea29704bb240c6cf28f5490f refs/heads/1-1-stable
+2013c836fefda2ea0bd9c1f2636cad9603ef8fc9 refs/heads/1-2-stable
+e6c7c199be1afc7817a85e084c84ed7e1cc643c5 refs/heads/1-3-stable
+cf5a5e541707ade7bf5fc4a39ac25e241752c570 refs/heads/2-0-stable
+7a7e26eace41bfe608acfb64f5e36b107cccdc6c refs/heads/2-1-stable
+6b3fee88fd7d7f7b578690f06476493b3b7a62ea refs/heads/2-2-stable
+380496f5c02b7fb541136654930ce085a8aa1f02 refs/heads/2-3-stable
+c5312cc7015e3eee6a9e4cd73435aa5a60a14e88 refs/heads/2-4-stable
+07520b0a69a4f27e829810ca76cfd2a801ef5571 refs/heads/3-0-stable
+ba191ba7353c35e97db38f1cad37a93e32e43ede refs/heads/3-1-stable
+774a0c1068caa5bb38c967f3c0f90fe1ca0a4288 refs/heads/fix_viewing_wishlist_when_not_current_user
+665f1f72dcecbc26dbe62be5a464ade4339242fb refs/heads/master
+c3ffed26950992cc037976042f7e1edaef970ca1 refs/heads/rails3-1
+a132ce298193a259b8a4b56f343a7aca784c9974 refs/tags/v1.3
+^155405212bc682c2feff6d7636ea1fbc269a7ae1
