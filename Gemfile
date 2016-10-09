@@ -36,7 +36,7 @@ gem 'spree_reviews', github: 'spree-contrib/spree_reviews', branch: '3-1-stable'
 gem 'spree_recently_viewed', github: 'spree-contrib/spree_recently_viewed', branch: '3-1-stable'
 gem 'spree_sitemap', github: 'spree-contrib/spree_sitemap', branch: '3-1-stable'
 
-
+gem 'spree_mail_settings', github: 'spree-contrib/spree_mail_settings', branch: '3-1-stable'
 
 
 
