@@ -73,13 +73,13 @@ Spree::ShippingCategory.create_or_update!({:name => "通常梱包"})
 
 
 # ShippingMethod
-Spree::ShippingMethod.create_or_update!({
-  :name => "ヤマト宅急便 ",
-  :zones => [Spree::Zone.first],
-  :shipping_categories => [Spree::ShippingCategory.first],
-  :calculator => Spree::Calculator::PerItem.create!({:preferred_amount => 600, :preferred_currency => "JPY"}),
-  :calculator_type => "Spree::Calculator::Shipping::PerItem"
-  })
+#Spree::ShippingMethod.create_or_update!({
+  #:name => "ヤマト宅急便 ",
+  #:zones => [Spree::Zone.first],
+  #:shipping_categories => [Spree::ShippingCategory.first],
+  #:calculator => Spree::Calculator::PerItem.create!({:preferred_amount => 600, :preferred_currency => "JPY"}),
+  #:calculator_type => "Spree::Calculator::Shipping::PerItem"
+#})
 
 
 # State
