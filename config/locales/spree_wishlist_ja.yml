@@ -8,7 +8,7 @@ ja:
     creating_wishlist: "ほしい物リストを作成中です"
     date_added: "登録日"
     delete_wishlist: "ほしい物リストを削除する"
-    default_wishlist_name: 'ほしい物リスト'
+    default_wishlist_name: "ほしい物リスト"
     edit_wishlist: "ほしい物リストを編集する"
     editing_wishlist: "ほしい物リストを編集中です"
     in_stock: "在庫有り"
