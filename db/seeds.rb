@@ -26,62 +26,137 @@ end
 Spree::Config[:currency] = "JPY"
 
 
+Spree::Config[:currency] = "JPY"
+ 
+ 
 # PaymentMethod
-Spree::PaymentMethod::Check.create_or_update!({
-    :name => "チェック",
-    :description => "Pay by check.",
-    :active => true
-  })
+Spree::PaymentMethod::Check.create!(
+  {
+    name: "チェック",
+    description: "チェックによる支払い.",
+    active: true
+  }
+)
 
-
-# Taxonomy
-Spree::Taxonomy.create_or_update!({:name => 'カテゴリ名'})
-
-
+ 
 # OptionType
-Spree::OptionType.create_or_update!({
-  :name => "オプションタイプの名称",
-  :presentation => "オプションタイプの表示名",
+Spree::OptionType.create!([{
+  :name => "Size",
+  :presentation => "商品の大きさ",
   :position => 1
-  })
+  },
+  {
+    :name => "Color",
+    :presentation => "商品の色",
+    :position => 2
+  }
+])
 
-
+# Option Value
+size = Spree::OptionType.find_by_name!("Size")
+color = Spree::OptionType.find_by_name!("Color")
+Spree::OptionValue.create!([
+  {
+    :name => "small",
+    :presentation => "小",
+    :position => 1,
+    :option_type => size
+  },
+  {
+    :name => "medium",
+    :presentation => "中",
+    :position => 2,
+    :option_type => size
+  },
+  {
+    :name => "laerge",
+    :presentation => "大",
+    :position => 3,
+    :option_type => size
+  },
+  {
+    :name => "xlarge",
+    :presentation => "特大",
+    :position => 4,
+    :option_type => size
+  },
+  {
+    :name => "red",
+    :presentation => "赤",
+    :position => 1,
+    :option_type => color,
+  },
+  {
+    :name => "green",
+    :presentation => "緑",
+    :position => 2,
+    :option_type => color,
+  },
+  {
+    :name => "blue",
+    :presentation => "青",
+    :position => 3,
+    :option_type => color
+  }
+])
+ 
+ 
 # Property
-Spree::Property.create_or_update!({
-  :name => "プロパティの名称",
-  :presentation => "プロパティの表示名",
-  })
-
-
+props = [
+  {
+    :name => "製造元",
+    :presentation => "製造元の名称",
+  }, 
+  {
+    :name => "ブランド",
+    :presentation => "ブランドの名称",
+  }, 
+  {
+    :name => "素材",
+    :presentation => "素材の名称",
+  }
+]
+props.each do |prop|
+  Spree::Property.create!(prop)
+end
+ 
 # Prototype
-Spree::Prototype.create_or_update!({
-  :name => "プロトタイプの名称",
-  :properties => [Spree::Property.first]
-  })
+prototypes = [
+  {
+    :name => "シャツ",
+    :properties => ["製造元", "ブランド", "素材"]
+  }
+]
 
-
+prototypes.each do |prototype_attrs|
+  prototype = Spree::Prototype.create!(:name => prototype_attrs[:name])
+  prototype_attrs[:properties].each do |property|
+    prototype.properties << Spree::Property.where(name: property).first
+  end
+end
+ 
 # Country
-Spree::Country.create_or_update!({"name"=>"日本", "iso3"=>"JPN", "iso"=>"JP", "iso_name"=>"JAPAN", "numcode"=>"392"})
-
-
+Spree::Country.create!({"name"=>"日本", "iso3"=>"JPN", "iso"=>"JP", "iso_name"=>"JAPAN", "numcode"=>"392"})
+ 
 # Zone
-Spree::Zone.create_or_update!({:name => "全国共通", :description => "日本全国"})
-Spree::Zone.first.zone_members.create_or_update!(:zoneable => Spree::Country.first)
-
+Spree::Zone.create!({:name => "全国共通", :description => "日本全国", :default_tax => true})
+Spree::Zone.first.zone_members.create!(:zoneable => Spree::Country.first)
+ 
 # ShippingCategory
-Spree::ShippingCategory.create_or_update!({:name => "通常梱包"})
-
-
+Spree::ShippingCategory.destroy_all
+Spree::ShippingCategory.create!({:name => "通常梱包"})
+ 
+ 
 # ShippingMethod
-#Spree::ShippingMethod.create_or_update!({
-  #:name => "ヤマト宅急便 ",
-  #:zones => [Spree::Zone.first],
-  #:shipping_categories => [Spree::ShippingCategory.first],
-  #:calculator => Spree::Calculator::PerItem.create!({:preferred_amount => 600, :preferred_currency => "JPY"}),
-  #:calculator_type => "Spree::Calculator::Shipping::PerItem"
-#})
-
-
+Spree::ShippingMethod.create!({
+  :name => "ヤマト宅急便 ",
+  :zones => [Spree::Zone.first],
+  :shipping_categories => [Spree::ShippingCategory.first],
+  :calculator => Spree::Calculator::FlatRate.create!({:preferred_amount => 600, :preferred_currency => "JPY"}),
+  :calculator_type => "Spree::Calculator::Shipping::FlatRate"
+  })
+ 
+ 
 # State
 country = Spree::Country.first
 unless Spree::State.any?
@@ -133,23 +208,23 @@ unless Spree::State.any?
   Spree::State.create!({"name"=>"鹿児島県", "abbr"=>"Kagoshima", :country=>country})
   Spree::State.create!({"name"=>"沖縄県", "abbr"=>"Okinawa", :country=>country})
 end
-
-
+ 
+ 
 # TaxCategory
-Spree::TaxCategory.create_or_update!({:name => "消費税一般", :is_default => true})
-
-
+Spree::TaxCategory.create!({:name => "消費税一般", :is_default => true})
+ 
+ 
 # TaxRate
-Spree::TaxRate.create_or_update!({
+Spree::TaxRate.create!({
   :name => "全国共通",
   :zone => Spree::Zone.first, 
-  :amount => 0.05,
+  :amount => 0.08,
   :tax_category => Spree::TaxCategory.first,
   :calculator => Spree::Calculator::DefaultTax.create!
 })
-
+ 
 # Product
-Spree::Product.create_or_update!({
+Spree::Product.create!({
   :name => "最初の商品",
   :price => 1000,
   :shipping_category => Spree::ShippingCategory.first,
@@ -157,29 +232,62 @@ Spree::Product.create_or_update!({
   :description => '商品説明',
   :available_on => Time.zone.now
   })
+ 
+ 
+# Taxonomy
+Spree::Taxonomy.create!([
+  {:name => 'ジャンル'}
+])
 
-# Variant
-Spree::Variant.create_or_update!({
-  :product => Spree::Product.first,
-  :sku => 'sku-001',
-  :cost_price => 100
-  })
-Spree::Product.first.master.update_attributes!({
-  :sku => 'sku-001',
-  :cost_price => 100  
-  })
-
+# Taxon 
+genre = Spree::Taxonomy.find_by_name!("ジャンル")
+taxons = [
+  {
+    :name => "ジャンル",
+    :taxonomy => genre,
+    :position => 0
+  },
+  {
+    :name => "ファッション",
+    :taxonomy => genre,
+    :parent => "ジャンル",
+    :position => 1,
+    :products => [
+      Spree::Product.first
+    ]
+  },
+  {
+    :name => "インテリア",
+    :taxonomy => genre,
+    :parent => "ジャンル",
+    :position => 2
+  }
+]
+taxons.each do |taxon_attrs|
+  if taxon_attrs[:parent]
+    taxon_attrs[:parent] = Spree::Taxon.where(name: taxon_attrs[:parent]).first
+    Spree::Taxon.create!(taxon_attrs)
+  end
+end
 
 # StockLocation
-Spree::StockLocation.create_or_update!({
-  :name => 'デフォルトの倉庫',
+Spree::StockLocation.destroy_all
+Spree::StockLocation.create!({
+  :name => 'デフォルト倉庫',
   :active => true,
   :country => Spree::Country.first
   })
-# Spree::StockMovement.create_or_update!(:quantity => 100, :stock_item => Spree::Variant.first.stock_items.first)
-Spree::StockMovement.create(:quantity => 100, :stock_item => Spree::Variant.first.stock_items.first)
+Spree::StockMovement.create!(:quantity => 100, :stock_item => Spree::Variant.first.stock_items.first)
 
-
+# Refund reason
+Spree::RefundReason.destroy_all
+Spree::RefundReason.create!(name: "不良品", mutable: false)
+Spree::RefundReason.create!(name: "商品が異なる", mutable: false)
+ 
+# Role
+Spree::Role.where(:name => "user").first_or_create
+Spree::Role.where(:name => "admin").first_or_create
+ 
 # Admin
 # email = 'spree@example.com'
 # password = 'spree123'
