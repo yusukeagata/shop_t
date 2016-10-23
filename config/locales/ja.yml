@@ -426,6 +426,10 @@ ja:
     adjustable: "調整可能"
     adjustment: "調整（値引き・追加料金）"
     adjustment_amount: "量"
+    adjustment_labels:
+      tax_rates:
+        including_tax: '%{name}%{amount} (Included in Price)'
+        excluding_tax: '%{name}%{amount}'
     adjustment_successfully_closed: "調整（値引き・追加料金）のクローズに成功しました。"
     adjustment_successfully_opened: "調整（値引き・追加料金）の解放に成功しました。"
     adjustment_total: "調整（値引き・追加料金）総額"
@@ -1398,6 +1402,8 @@ ja:
     zone: "ゾーン"
     zones: "ゾーン"
     pages: "特集"
+    including_tax: "%{price} (incl. %{tax_amount} %{tax_rate_name})"
+    excluding_tax: "%{price} (+ %{tax_amount} %{tax_rate_name})"
     static_content:
       link: "特集ページ"
       new_page: "新規ページ"
